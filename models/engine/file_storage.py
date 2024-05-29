@@ -76,21 +76,20 @@ class FileStorage:
         if cls and id:
             if cls in classes.values():
                 all_objs = self.all(cls)
-                for value in all_objs.values():
-                    if value.id == id:
-                        return value
-            return
-        return
+                for obj in all_objs.values():
+                    if obj.id == id:
+                        return obj
+        return None
 
     def count(self, cls=None):
         '''count:
         count the number of objects in storage matchin the given class.
         '''
-        if not cls:
+        if cls is None:
             inst_of_all_cls = self.all()
-            return len(inst_of_all-cls)
-        if cls cls in classes.value():
+            return len(inst_of_all_cls)
+        elif cls in classes.value():
             all_inst_of_prov_cls = self.all(cls)
             return len(all_inst_of_prov_cls)
-        if cls not in classes.values():
-            return
+        else:
+            return 0
